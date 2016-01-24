@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from fminimaxCheckvector.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="fminimaxCheckvector" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>fminimaxCheckvector</refname>
+    <refpurpose>Generates an error if the variable is not a vector.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   errmsg = fminimaxCheckvector ( funname , var , varname , ivar )
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>funname :</term>
+      <listitem><para> a 1 x 1 matrix of strings, the name of the calling function.</para></listitem></varlistentry>
+   <varlistentry><term>var :</term>
+      <listitem><para> a 1 x 1 matrix of valid Scilab data type, the variable</para></listitem></varlistentry>
+   <varlistentry><term>varname :</term>
+      <listitem><para> a 1 x 1 matrix of string, the name of the variable</para></listitem></varlistentry>
+   <varlistentry><term>ivar :</term>
+      <listitem><para> a 1 x 1 matrix of floating point integers, the index of the input argument in the calling sequence</para></listitem></varlistentry>
+   <varlistentry><term>nbval :</term>
+      <listitem><para> a 1 x 1 matrix of floating point integers, the number of entries in the vector.</para></listitem></varlistentry>
+   <varlistentry><term>errmsg :</term>
+      <listitem><para> a 1 x 1 matrix of strings, the error message. If there was no error, the error message is the empty matrix.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function is designed to be used to design functions where
+the input argument is a vector, that is, a matrix for which
+nrows == 1 or ncols == 1.
+This function cannot be use when var is a function, or more
+generally, for any input argument for which the size function
+does not work.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// The function takes a vector of 3 doubles.
+function y = myfunction ( x )
+fminimaxCheckvector ( "myfunction" , x , "x" , 1 , 3 )
+y = x
+endfunction
+// Calling sequences which work
+y = myfunction ( ones(1,3) )
+y = myfunction ( zeros(3,1) )
+// Calling sequences which generate an error
+// The following are not vectors
+y = myfunction ( ones(2,3) )
+y = myfunction ( zeros(3,2) )
+// The following have the wrong number of entries
+y = myfunction ( ones(1,3) )
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Michael Baudin - 2010 - DIGITEO</member>
+   </simplelist>
+</refsection>
+</refentry>

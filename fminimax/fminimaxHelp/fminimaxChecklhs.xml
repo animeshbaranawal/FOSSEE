@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from fminimaxChecklhs.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="fminimaxChecklhs" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>fminimaxChecklhs</refname>
+    <refpurpose>Generates an error if the number of LHS is not in given set.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   errmsg = fminimaxChecklhs ( funname , lhs , lhsset )
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>funname :</term>
+      <listitem><para> a 1 x 1 matrix of strings, the name of the calling function.</para></listitem></varlistentry>
+   <varlistentry><term>lhs :</term>
+      <listitem><para> a 1 x 1 matrix of floating point integers, the actual number of output arguments</para></listitem></varlistentry>
+   <varlistentry><term>lhsset :</term>
+      <listitem><para> a 1 x n or n x 1 matrix of floating point integers, the authorized number of output arguments</para></listitem></varlistentry>
+   <varlistentry><term>errmsg :</term>
+      <listitem><para> a 1 x 1 matrix of strings, the error message. If there was no error, the error message is the empty matrix.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function is designed to be used to design functions with
+variable number of output arguments.
+Notice that it is useless to call this function if the
+function definition does not use the varargout statement.
+Notice that a function as a minimum of 1 output argument.
+Last update : 29/07/2010.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// The function takes 3 input arguments and 1/2 output arguments
+function varargout = myfunction ( x1 , x2 , x3 )
+[lhs, rhs] = argn()
+fminimaxCheckrhs ( "myfunction" , rhs , 3 : 3 )
+fminimaxChecklhs ( "myfunction" , lhs , 1 : 2 )
+y1 = x1 + x2
+y2 = x2 + x3
+varargout(1) = y1
+if ( lhs == 2 ) then
+varargout(2) = y2
+end
+endfunction
+// Calling sequences which work
+myfunction ( 1 , 2 , 3 )
+y1 = myfunction ( 1 , 2 , 3 )
+[ y1 , y2 ] = myfunction ( 1 , 2 , 3 )
+// Calling sequences which generate an error
+[ y1 , y2 , y3 ] = myfunction ( 1 , 2 , 3 )
+
+// The function takes 1 or 3 output arguments, but not 2
+function varargout = myfunction ( x1 , x2 , x3 )
+[lhs, rhs] = argn()
+fminimaxCheckrhs ( "myfunction" , rhs , 3 : 3 )
+fminimaxChecklhs ( "myfunction" , lhs , [1 3] )
+y1 = x1 + x2
+y2 = x2 + x3
+y3 = x1 + x3
+varargout(1) = y1
+if ( lhs == 3 ) then
+varargout(2) = y2
+varargout(3) = y3
+end
+endfunction
+// Calling sequences which work
+myfunction ( 1 , 2 , 3 )
+y1 = myfunction ( 1 , 2 , 3 )
+[ y1 , y2 , y3 ] = myfunction ( 1 , 2 , 3 )
+// Calling sequences which generate an error
+[y1 , y2] = myfunction ( 1 , 2 , 3 )
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Michael Baudin - 2010 - DIGITEO</member>
+   </simplelist>
+</refsection>
+</refentry>

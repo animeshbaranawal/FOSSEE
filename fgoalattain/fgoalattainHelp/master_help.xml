@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY ab6bcf7cc339d69bb12906aac61ab770c SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fgoalattain/fgoalattainHelp/fgoalattain.xml">
+<!ENTITY aae1365b3e420632ae92ee010d26b1b83 SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fgoalattain/fgoalattainHelp/fgoalattainFunctions.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="fgoalattainHelp"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='fgoalattain_manual'>
+    <title>fgoalattain</title>
+  </info>
+
+<part xml:id='section_017ab274dc00c99fc5a50b4ce3f41fb8'>
+<title>fgoalattain</title>
+&ab6bcf7cc339d69bb12906aac61ab770c;
+&aae1365b3e420632ae92ee010d26b1b83;
+</part>
+</book>

@@ -1,0 +1,105 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>fminimaxCheckvector</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="fminimaxChecktype.html">&lt;&lt; fminimaxChecktype</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_eb65a1c81c1a6be534675536e35d8a27.html">fminimax</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="fminimax_v2.html">fminimax_v2 &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">fminimax</a> &gt;&gt; <a href="section_eb65a1c81c1a6be534675536e35d8a27.html">fminimax</a> &gt; fminimaxCheckvector</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">fminimaxCheckvector</h1>
+    <p class="refpurpose">Generates an error if the variable is not a vector.</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">errmsg</span><span class="default"> = </span><span class="functionid">fminimaxCheckvector</span><span class="default"> ( </span><span class="default">funname</span><span class="default"> , </span><span class="default">var</span><span class="default"> , </span><span class="default">varname</span><span class="default"> , </span><span class="default">ivar</span><span class="default"> )</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">funname :</span>
+      <dd><p class="para">a 1 x 1 matrix of strings, the name of the calling function.</p></dd></dt>
+   <dt><span class="term">var :</span>
+      <dd><p class="para">a 1 x 1 matrix of valid Scilab data type, the variable</p></dd></dt>
+   <dt><span class="term">varname :</span>
+      <dd><p class="para">a 1 x 1 matrix of string, the name of the variable</p></dd></dt>
+   <dt><span class="term">ivar :</span>
+      <dd><p class="para">a 1 x 1 matrix of floating point integers, the index of the input argument in the calling sequence</p></dd></dt>
+   <dt><span class="term">nbval :</span>
+      <dd><p class="para">a 1 x 1 matrix of floating point integers, the number of entries in the vector.</p></dd></dt>
+   <dt><span class="term">errmsg :</span>
+      <dd><p class="para">a 1 x 1 matrix of strings, the error message. If there was no error, the error message is the empty matrix.</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">This function is designed to be used to design functions where
+the input argument is a vector, that is, a matrix for which
+nrows == 1 or ncols == 1.
+This function cannot be use when var is a function, or more
+generally, for any input argument for which the size function
+does not work.</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// The function takes a vector of 3 doubles.</span>
+<span class="scilabfkeyword">function</span> <span class="scilabinputoutputargs">y</span><span class="scilaboperator">=</span><span class="scilabfunctionid">myfunction</span><span class="scilabopenclose">(</span><span class="scilabinputoutputargs">x</span><span class="scilabopenclose">)</span>
+<span class="scilabid">fminimaxCheckvector</span> <span class="scilabopenclose">(</span> <span class="scilabstring">&#0034;</span><span class="scilabstring">myfunction</span><span class="scilabstring">&#0034;</span> <span class="scilabdefault">,</span> <span class="scilabinputoutputargs">x</span> <span class="scilabdefault">,</span> <span class="scilabstring">&#0034;</span><span class="scilabstring">x</span><span class="scilabstring">&#0034;</span> <span class="scilabdefault">,</span> <span class="scilabnumber">1</span> <span class="scilabdefault">,</span> <span class="scilabnumber">3</span> <span class="scilabopenclose">)</span>
+<span class="scilabinputoutputargs">y</span> <span class="scilaboperator">=</span> <span class="scilabinputoutputargs">x</span>
+<span class="scilabfkeyword">endfunction</span>
+<span class="scilabcomment">// Calling sequences which work</span>
+<span class="scilabid">y</span> <span class="scilaboperator">=</span> <span class="scilabfunctionid">myfunction</span> <span class="scilabopenclose">(</span> <a class="scilabcommand" href="scilab://ones">ones</a><span class="scilabopenclose">(</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabopenclose">)</span> <span class="scilabopenclose">)</span>
+<span class="scilabid">y</span> <span class="scilaboperator">=</span> <span class="scilabfunctionid">myfunction</span> <span class="scilabopenclose">(</span> <a class="scilabcommand" href="scilab://zeros">zeros</a><span class="scilabopenclose">(</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabopenclose">)</span> <span class="scilabopenclose">)</span>
+<span class="scilabcomment">// Calling sequences which generate an error</span>
+<span class="scilabcomment">// The following are not vectors</span>
+<span class="scilabid">y</span> <span class="scilaboperator">=</span> <span class="scilabfunctionid">myfunction</span> <span class="scilabopenclose">(</span> <a class="scilabcommand" href="scilab://ones">ones</a><span class="scilabopenclose">(</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabopenclose">)</span> <span class="scilabopenclose">)</span>
+<span class="scilabid">y</span> <span class="scilaboperator">=</span> <span class="scilabfunctionid">myfunction</span> <span class="scilabopenclose">(</span> <a class="scilabcommand" href="scilab://zeros">zeros</a><span class="scilabopenclose">(</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabopenclose">)</span> <span class="scilabopenclose">)</span>
+<span class="scilabcomment">// The following have the wrong number of entries</span>
+<span class="scilabid">y</span> <span class="scilaboperator">=</span> <span class="scilabfunctionid">myfunction</span> <span class="scilabopenclose">(</span> <a class="scilabcommand" href="scilab://ones">ones</a><span class="scilabopenclose">(</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabopenclose">)</span> <span class="scilabopenclose">)</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">Michael Baudin - 2010 - DIGITEO</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="fminimaxChecktype.html">&lt;&lt; fminimaxChecktype</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_eb65a1c81c1a6be534675536e35d8a27.html">fminimax</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="fminimax_v2.html">fminimax_v2 &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

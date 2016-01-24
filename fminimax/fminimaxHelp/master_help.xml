@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY a84e7e0ed8c32baa78ee8bc6f36b1573e SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimax.xml">
+<!ENTITY acc2d801f154bfce649a2531f51c4119f SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimaxCheckdims.xml">
+<!ENTITY a56713dc966eb5b6c6e70b56a5173e7e8 SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimaxChecklhs.xml">
+<!ENTITY a711410b52c2b02c5aa6dc9bb7e3f6c3e SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimaxCheckrhs.xml">
+<!ENTITY aee81b86c2b3607015d640dc081533596 SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimaxChecktype.xml">
+<!ENTITY a76190addcf9da2a715f7237b7fa2af59 SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimaxCheckvector.xml">
+<!ENTITY a55b228587a917ccb9b81feb070276ba1 SYSTEM "/home/animesh/Desktop/FOSSEE/Scilab-codes/fminimax/fminimaxHelp/fminimax_v2.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="fminimaxHelp"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='fminimax_manual'>
+    <title>fminimax</title>
+  </info>
+
+<part xml:id='section_eb65a1c81c1a6be534675536e35d8a27'>
+<title>fminimax</title>
+&a84e7e0ed8c32baa78ee8bc6f36b1573e;
+&acc2d801f154bfce649a2531f51c4119f;
+&a56713dc966eb5b6c6e70b56a5173e7e8;
+&a711410b52c2b02c5aa6dc9bb7e3f6c3e;
+&aee81b86c2b3607015d640dc081533596;
+&a76190addcf9da2a715f7237b7fa2af59;
+&a55b228587a917ccb9b81feb070276ba1;
+</part>
+</book>

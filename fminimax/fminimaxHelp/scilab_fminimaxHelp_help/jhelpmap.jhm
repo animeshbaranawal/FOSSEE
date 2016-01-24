@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
+<map version="1.0">
+<mapID target="index" url="index.html"/>
+<mapID target="section_eb65a1c81c1a6be534675536e35d8a27" url="section_eb65a1c81c1a6be534675536e35d8a27.html"/>
+<mapID target="fminimax" url="fminimax.html"/>
+<mapID target="fminimaxCheckdims" url="fminimaxCheckdims.html"/>
+<mapID target="fminimaxChecklhs" url="fminimaxChecklhs.html"/>
+<mapID target="fminimaxCheckrhs" url="fminimaxCheckrhs.html"/>
+<mapID target="fminimaxChecktype" url="fminimaxChecktype.html"/>
+<mapID target="fminimaxCheckvector" url="fminimaxCheckvector.html"/>
+<mapID target="fminimax_v2" url="fminimax_v2.html"/>
+</map>
