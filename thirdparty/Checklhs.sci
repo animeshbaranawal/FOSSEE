@@ -2,11 +2,11 @@
 //
 // This file must be used under the terms of the GNU LGPL license.
 
-function errmsg = fminimaxChecklhs ( funname , lhs , lhsset )
+function errmsg = Checklhs ( funname , lhs , lhsset )
   // Generates an error if the number of LHS is not in given set.
   //
   // Calling Sequence
-  //   errmsg = fminimaxChecklhs ( funname , lhs , lhsset )
+  //   errmsg = Checklhs ( funname , lhs , lhsset )
   //
   // Parameters
   //   funname : a 1 x 1 matrix of strings, the name of the calling function.
@@ -26,8 +26,8 @@ function errmsg = fminimaxChecklhs ( funname , lhs , lhsset )
   // // The function takes 3 input arguments and 1/2 output arguments
   // function varargout = myfunction ( x1 , x2 , x3 )
   //   [lhs, rhs] = argn()
-  //   fminimaxCheckrhs ( "myfunction" , rhs , 3 : 3 )
-  //   fminimaxChecklhs ( "myfunction" , lhs , 1 : 2 )
+  //   Checkrhs ( "myfunction" , rhs , 3 : 3 )
+  //   Checklhs ( "myfunction" , lhs , 1 : 2 )
   //   y1 = x1 + x2
   //   y2 = x2 + x3
   //   varargout(1) = y1
@@ -45,8 +45,8 @@ function errmsg = fminimaxChecklhs ( funname , lhs , lhsset )
   // // The function takes 1 or 3 output arguments, but not 2
   // function varargout = myfunction ( x1 , x2 , x3 )
   //   [lhs, rhs] = argn()
-  //   fminimaxCheckrhs ( "myfunction" , rhs , 3 : 3 )
-  //   fminimaxChecklhs ( "myfunction" , lhs , [1 3] )
+  //   Checkrhs ( "myfunction" , rhs , 3 : 3 )
+  //   Checklhs ( "myfunction" , lhs , [1 3] )
   //   y1 = x1 + x2
   //   y2 = x2 + x3
   //   y3 = x1 + x3

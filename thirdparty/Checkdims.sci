@@ -3,11 +3,11 @@
 //
 // This file must be used under the terms of the GNU LGPL license.
 
-function errmsg = fminimaxCheckdims ( funname , var , varname , ivar , matdims )
+function errmsg = Checkdims ( funname , var , varname , ivar , matdims )
   // Generates an error if the variable has not the required size.
   //
   // Calling Sequence
-  //   errmsg = fminimaxCheckdims ( funname , var , varname , ivar , matdims )
+  //   errmsg = Checkdims ( funname , var , varname , ivar , matdims )
   //
   // Parameters
   //   funname : a 1 x 1 matrix of strings, the name of the calling function.
@@ -28,7 +28,7 @@ function errmsg = fminimaxCheckdims ( funname , var , varname , ivar , matdims )
   // Examples
   // // The function takes a 2 x 3 matrix of doubles.
   // function y = myfunction ( x )
-  //   fminimaxCheckdims ( "myfunction" , x , "x" , 1 , [2 3] )
+  //   Checkdims ( "myfunction" , x , "x" , 1 , [2 3] )
   //   y = x
   // endfunction
   // // Calling sequences which work
@@ -43,8 +43,8 @@ function errmsg = fminimaxCheckdims ( funname , var , varname , ivar , matdims )
   //
 
   [lhs,rhs]=argn()
-  fminimaxCheckrhs ( "fminimaxCheckdims" , rhs , 5 )
-  fminimaxChecklhs ( "fminimaxCheckdims" , lhs , [0 1] )
+  Checkrhs ( funname , rhs , 5 )
+  Checklhs ( funname , lhs , [0 1] )
 
   errmsg = []
   if ( or ( size(var) <> matdims ) ) then

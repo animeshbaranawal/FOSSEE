@@ -184,28 +184,28 @@ function [x,fval,attainfactor,exitflag,output,lambda] = fgoalattain(varargin)
 
     // Check number of input and output arguments
     [gattainLhs,gattainRhs] = argn()
-    fgoalattainCheckrhs("fgoalattain", gattainRhs, [4 6 8 10 11 12])
-    fgoalattainChecklhs("fgoalattain", gattainLhs, 1:6)
+    Checkrhs("fgoalattain", gattainRhs, [4 6 8 10 11 12])
+    Checklhs("fgoalattain", gattainLhs, 1:6)
 
     // initialisation of fun
     gattainObjfun = varargin(1)
-    fgoalattainChecktype("fgoalattain", gattainObjfun, "fun", 1, "function")
+    Checktype("fgoalattain", gattainObjfun, "fun", 1, "function")
 
     // initialisation of x0
     gattainStartpoint = varargin(2)
-    fgoalattainChecktype("fgoalattain", gattainStartpoint, "x0", 2, "constant")
+    Checktype("fgoalattain", gattainStartpoint, "x0", 2, "constant")
 
     gattainNumvar = size(gattainStartpoint,"*")
-    fgoalattainCheckvector("fgoalattain", gattainStartpoint, "x0", 2, gattainNumvar)
+    Checkvector("fgoalattain", gattainStartpoint, "x0", 2, gattainNumvar)
     gattainStartpoint = gattainStartpoint(:)
 
     // initialisation of goal
     goal=varargin(3)
-    fgoalattainChecktype("fgoalattain",goal,"goal",3,"constant")
+    Checktype("fgoalattain",goal,"goal",3,"constant")
 
     // initialisation of weight
     weight=varargin(4)
-    fgoalattainChecktype("fgoalattain",weight,"weight",4,"constant")
+    Checktype("fgoalattain",weight,"weight",4,"constant")
 
     //initialisation of A and b
     if(gattainRhs < 5) then
@@ -216,13 +216,13 @@ function [x,fval,attainfactor,exitflag,output,lambda] = fgoalattain(varargin)
         gattainB = varargin(6)
     end
 
-    fgoalattainChecktype("fgoalattain", gattainA, "A", 5, "constant")
-    fgoalattainChecktype("fgoalattain", gattainB, "b", 6, "constant")
+    Checktype("fgoalattain", gattainA, "A", 5, "constant")
+    Checktype("fgoalattain", gattainB, "b", 6, "constant")
 
     gattainNumrowA = size(gattainA,"r")
     if(gattainA <> []) then
-        fgoalattainCheckdims("fgoalattain", gattainA, "A", 5, [gattainNumrowA gattainNumvar])
-        fgoalattainCheckvector("fgoalattain", gattainB, "b", 6, gattainNumrowA)
+        Checkdims("fgoalattain", gattainA, "A", 5, [gattainNumrowA gattainNumvar])
+        Checkvector("fgoalattain", gattainB, "b", 6, gattainNumrowA)
         gattainB = gattainB(:)
     end
 
@@ -235,13 +235,13 @@ function [x,fval,attainfactor,exitflag,output,lambda] = fgoalattain(varargin)
         gattainBeq = varargin(8)
     end
 
-    fgoalattainChecktype("fgoalattain", gattainAeq, "Aeq", 7, "constant")
-    fgoalattainChecktype("fgoalattain", gattainBeq, "beq", 8, "constant")
+    Checktype("fgoalattain", gattainAeq, "Aeq", 7, "constant")
+    Checktype("fgoalattain", gattainBeq, "beq", 8, "constant")
 
     gattainNumrowAeq = size(gattainAeq,"r")
     if(gattainAeq <> []) then
-        fgoalattainCheckdims("fgoalattain", gattainAeq, "Aeq", 7, [gattainNumrowAeq gattainNumvar])
-        fgoalattainCheckvector("fgoalattain", gattainBeq, "beq", 8, gattainNumrowAeq)
+        Checkdims("fgoalattain", gattainAeq, "Aeq", 7, [gattainNumrowAeq gattainNumvar])
+        Checkvector("fgoalattain", gattainBeq, "beq", 8, gattainNumrowAeq)
         gattainBeq = gattainBeq(:)
     end
 
@@ -254,17 +254,17 @@ function [x,fval,attainfactor,exitflag,output,lambda] = fgoalattain(varargin)
         gattainUb = varargin(10)
     end
 
-    fgoalattainChecktype("fgoalattain", gattainLb, "lb", 9, "constant")
-    fgoalattainChecktype("fgoalattain", gattainUb, "ub", 10, "constant")
+    Checktype("fgoalattain", gattainLb, "lb", 9, "constant")
+    Checktype("fgoalattain", gattainUb, "ub", 10, "constant")
 
     // Check dimensions of lb and ub
     if(gattainLb <> []) then
-        fgoalattainCheckvector("fgoalattain", gattainLb, "lb", 9, gattainNumvar)
+        Checkvector("fgoalattain", gattainLb, "lb", 9, gattainNumvar)
         gattainLb = gattainLb(:)
     end
 
     if(gattainUb <> []) then
-        fgoalattainCheckvector("fgoalattain", gattainUb, "ub", 10, gattainNumvar)
+        Checkvector("fgoalattain", gattainUb, "ub", 10, gattainNumvar)
         gattainUb = gattainUb(:)
     end
 
@@ -280,7 +280,7 @@ function [x,fval,attainfactor,exitflag,output,lambda] = fgoalattain(varargin)
         gattainNonlinfun = varargin(11)
     end
 
-    fgoalattainChecktype("fgoalattain", gattainNonlinfun, "nonlcon", 11, "function")
+    Checktype("fgoalattain", gattainNonlinfun, "nonlcon", 11, "function")
 
     // initialisation of default options
     if(gattainRhs < 12) then
@@ -319,12 +319,20 @@ function [x,fval,attainfactor,exitflag,output,lambda] = fgoalattain(varargin)
             fgaCPU = gattainUserOptions(2*i);    //Setting the Maximum CPU Time as per user entry
 
         case "GradObj" then
-            flag1=1;
-            gattainFGrad = gattainUserOptions(2*i);
+            if (strcmp(gattainUserOptions(2*i),"OFF",'i') == 0) then
+                flag1=0;
+            else
+                flag1=1;
+                gattainFGrad = gattainUserOptions(2*i);
+            end
 
         case "GradCon" then
-            flag2=1;
-            gattainCGrad = gattainUserOptions(2*i);
+            if (strcmp(gattainUserOptions(2*i),"OFF",'i') == 0) then
+                flag2=0;
+            else
+                flag2=1;
+                gattainCGrad = gattainUserOptions(2*i);
+            end
 
         else
             errmsg = msprintf(gettext("%s: Unrecognized gattainUserOptionseter name ''%s''."), "fminimax", gattainUserOptions(2*i-1));

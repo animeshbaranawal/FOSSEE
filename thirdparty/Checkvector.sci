@@ -2,11 +2,11 @@
 //
 // This file must be used under the terms of the GNU LGPL license.
 
-function errmsg = fminimaxCheckvector ( funname , var , varname , ivar , nbval )
+function errmsg = Checkvector ( funname , var , varname , ivar , nbval )
   // Generates an error if the variable is not a vector.
   //
   // Calling Sequence
-  //   errmsg = fminimaxCheckvector ( funname , var , varname , ivar )
+  //   errmsg = Checkvector ( funname , var , varname , ivar )
   //
   // Parameters
   //   funname : a 1 x 1 matrix of strings, the name of the calling function.
@@ -27,7 +27,7 @@ function errmsg = fminimaxCheckvector ( funname , var , varname , ivar , nbval )
   // Examples
   // // The function takes a vector of 3 doubles.
   // function y = myfunction ( x )
-  //   fminimaxCheckvector ( "myfunction" , x , "x" , 1 , 3 )
+  //   Checkvector ( "myfunction" , x , "x" , 1 , 3 )
   //   y = x
   // endfunction
   // // Calling sequences which work

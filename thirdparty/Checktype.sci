@@ -2,11 +2,11 @@
 //
 // This file must be used under the terms of the GNU LGPL license.
 
-function errmsg = fminimaxChecktype ( funname , var , varname , ivar , expectedtype )
+function errmsg = Checktype ( funname , var , varname , ivar , expectedtype )
   // Generates an error if the given variable is not of expected type.
   //
   // Calling Sequence
-  //   errmsg = fminimaxChecktype ( funname , var , varname , ivar , expectedtype )
+  //   errmsg = Checktype ( funname , var , varname , ivar , expectedtype )
   //
   // Parameters
   //   funname : a 1 x 1 matrix of strings, the name of the calling function.
@@ -26,7 +26,7 @@ function errmsg = fminimaxChecktype ( funname , var , varname , ivar , expectedt
   // Examples
   // // The function takes a string argument.
   // function myfunction ( x )
-  //   fminimaxChecktype ( "myfunction" , x , "x" , 1 , "string" )
+  //   Checktype ( "myfunction" , x , "x" , 1 , "string" )
   //   disp("This is a string")
   // endfunction
   // // Calling sequences which work
@@ -36,7 +36,7 @@ function errmsg = fminimaxChecktype ( funname , var , varname , ivar , expectedt
   //
   // // The function takes a string or a matrix of doubles argument.
   // function myfunction ( x )
-  //   fminimaxChecktype ( "myfunction" , x , "x" , 1 , [ "string" "constant" ] )
+  //   Checktype ( "myfunction" , x , "x" , 1 , [ "string" "constant" ] )
   //   if ( typeof(x) == "string" ) then
   //     disp("This is a matrix of strings")
   //   else

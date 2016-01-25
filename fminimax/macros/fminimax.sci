@@ -231,19 +231,19 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
 
     // Check number of input and output arguments
     [minmaxLhs,minmaxRhs] = argn()
-    fminimaxCheckrhs("fminimax", minmaxRhs, [2 4 6 8 9 10])
-    fminimaxChecklhs("fminimax", minmaxLhs, 1:7)
+    Checkrhs("fminimax", minmaxRhs, [2 4 6 8 9 10])
+    Checklhs("fminimax", minmaxLhs, 1:7)
 
     // Proper initialisation of objective function
     minmaxObjfun = varargin(1)
-    fminimaxChecktype("fminimax", minmaxObjfun, "minmaxObjfun", 1, "function")
+    Checktype("fminimax", minmaxObjfun, "minmaxObjfun", 1, "function")
 
     // Proper initialisation of starting point
     minmaxStartpoint = varargin(2)
-    fminimaxChecktype("fminimax", minmaxStartpoint, "minmaxStartpoint", 2, "constant")
+    Checktype("fminimax", minmaxStartpoint, "minmaxStartpoint", 2, "constant")
 
     minmaxNumvar = size(minmaxStartpoint,"*")
-    fminimaxCheckvector("fminimax", minmaxStartpoint, "minmaxStartpoint", 2, minmaxNumvar)
+    Checkvector("fminimax", minmaxStartpoint, "minmaxStartpoint", 2, minmaxNumvar)
     minmaxStartpoint = minmaxStartpoint(:)
 
     // Proper initialisation of A and b
@@ -255,8 +255,8 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
         minmaxB = varargin(4)
     end
 
-    fminimaxChecktype("fminimax", minmaxA, "A", 3, "constant")
-    fminimaxChecktype("fminimax", minmaxB, "b", 4, "constant")
+    Checktype("fminimax", minmaxA, "A", 3, "constant")
+    Checktype("fminimax", minmaxB, "b", 4, "constant")
 
     // Check if A and b of proper dimensions
     if(minmaxA <> [] & minmaxB == []) then
@@ -271,8 +271,8 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
 
     minmaxNumrowA = size(minmaxA,"r")
     if(minmaxA <> []) then
-        fminimaxCheckdims("fminimax", minmaxA, "A", 3, [minmaxNumrowA minmaxNumvar])
-        fminimaxCheckvector("fminimax", minmaxB, "b", 4, minmaxNumrowA)
+        Checkdims("fminimax", minmaxA, "A", 3, [minmaxNumrowA minmaxNumvar])
+        Checkvector("fminimax", minmaxB, "b", 4, minmaxNumrowA)
         minmaxB = minmaxB(:)
     end
 
@@ -285,8 +285,8 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
         minmaxBeq = varargin(6)
     end
 
-    fminimaxChecktype("fminimax", minmaxAeq, "Aeq", 5, "constant")
-    fminimaxChecktype("fminimax", minmaxBeq, "beq", 6, "constant")
+    Checktype("fminimax", minmaxAeq, "Aeq", 5, "constant")
+    Checktype("fminimax", minmaxBeq, "beq", 6, "constant")
 
     // Check if Aeq and beq of proper dimensions
     if(minmaxAeq <> [] & minmaxBeq == []) then
@@ -301,8 +301,8 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
 
     minmaxNumrowAeq = size(minmaxAeq,"r")
     if(minmaxAeq <> []) then
-        fminimaxCheckdims("fminimax", minmaxAeq, "Aeq", 5, [minmaxNumrowAeq minmaxNumvar])
-        fminimaxCheckvector("fminimax", minmaxBeq, "beq", 6, minmaxNumrowAeq)
+        Checkdims("fminimax", minmaxAeq, "Aeq", 5, [minmaxNumrowAeq minmaxNumvar])
+        Checkvector("fminimax", minmaxBeq, "beq", 6, minmaxNumrowAeq)
         minmaxBeq = minmaxBeq(:)
     end
 
@@ -315,17 +315,17 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
         minmaxUb = varargin(8)
     end
 
-    fminimaxChecktype("fminimax", minmaxLb, "lb", 7, "constant")
-    fminimaxChecktype("fminimax", minmaxUb, "ub", 8, "constant")
+    Checktype("fminimax", minmaxLb, "lb", 7, "constant")
+    Checktype("fminimax", minmaxUb, "ub", 8, "constant")
 
     // Check dimensions of minmaxLb and minmaxUb
     if(minmaxLb <> []) then
-        fminimaxCheckvector("fminimax", minmaxLb, "lb", 7, minmaxNumvar)
+        Checkvector("fminimax", minmaxLb, "lb", 7, minmaxNumvar)
         minmaxLb = minmaxLb(:)
     end
 
     if(minmaxUb <> []) then
-        fminimaxCheckvector("fminimax", minmaxUb, "ub", 8, minmaxNumvar)
+        Checkvector("fminimax", minmaxUb, "ub", 8, minmaxNumvar)
         minmaxUb = minmaxUb(:)
     end
 
@@ -346,7 +346,7 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
         minmaxNonlinfun = t
     end
 
-    fminimaxChecktype("fminimax", minmaxNonlinfun, "nonlinfun", 9, "function")
+    Checktype("fminimax", minmaxNonlinfun, "nonlinfun", 9, "function")
 
     //To check, Whether minimaxOptions is been entered by user
     if ( minmaxRhs<10 ) then
@@ -385,12 +385,20 @@ function [x,fval,maxfval,exitflag,output,lambda] = fminimax(varargin)
             minmaxCPU = minmaxUserOptions(2*i);    //Setting the Maximum CPU Time as per user entry
 
         case "GradObj" then
-            flag1=1;
-            minmaxFGrad = minmaxUserOptions(2*i);
+            if (strcmp(minmaxUserOptions(2*i),"OFF",'i') == 0) then
+                flag1=0;
+            else
+                flag1=1;
+                minmaxFGrad = minmaxUserOptions(2*i);
+            end
 
         case "GradCon" then
-            flag2=1;
-            minmaxCGrad = minmaxUserOptions(2*i);
+            if (strcmp(minmaxUserOptions(2*i),"OFF",'i') == 0) then
+                flag2=0;
+            else
+                flag2=1;
+                minmaxCGrad = minmaxUserOptions(2*i);
+            end
 
         else
             errmsg = msprintf(gettext("%s: Unrecognized minmaxUserOptionseter name ''%s''."), "fminimax", minmaxUserOptions(2*i-1));
